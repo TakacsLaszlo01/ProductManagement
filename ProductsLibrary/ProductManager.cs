@@ -33,6 +33,7 @@ public class ProductManager
                     reader.GetString(1),
                     reader.GetDouble(2)
                 );
+                result.Add(product);
             }
         } finally { connection.Close(); }
 
@@ -41,5 +42,36 @@ public class ProductManager
     public void InsertProducts(params Product[] products)
     {
         //itt lesz az INSERT
+        try
+        {
+            connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO products (id, name, price) VALUES (@id, @name, @price)";
+
+            int n = products.Length;
+            for (int i = 0; i < n; i++)
+            {
+                command.Parameters.AddWithValue("@id", products[i].Id);
+                command.Parameters.AddWithValue("@name", products[i].Name);
+                command.Parameters.AddWithValue("@price", products[i].Price);
+
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+            }
+
+        } finally { connection.Close(); }
+    }
+    public void InsertProduct(string id, string name, double price)
+    {
+        try
+        {
+            connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO products (id, name, price) VALUES (@id, @name, @price)";
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@price", price);
+        }
+        finally { connection.Close(); }
     }
 }

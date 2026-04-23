@@ -1,0 +1,12 @@
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\bin\Debug\net8.0\ProductsLibrary.deps.json
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\bin\Debug\net8.0\ProductsLibrary.dll
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\bin\Debug\net8.0\ProductsLibrary.pdb
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.csproj.AssemblyReference.cache
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.AssemblyInfoInputs.cache
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.AssemblyInfo.cs
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.dll
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\refint\ProductsLibrary.dll
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ProductsLibrary.pdb
+C:\Users\tanar-taklas\source\repos\ProductsManagement\ProductsLibrary\obj\Debug\net8.0\ref\ProductsLibrary.dll
