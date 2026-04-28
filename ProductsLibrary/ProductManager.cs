@@ -2,6 +2,7 @@
 // right click the library project -> Open in File Explorer
 // write 'cmd' in the path box
 // dotnet add package MySql.Data -v 8.0
+// do not update its version
 using MySql.Data.MySqlClient;
 /// <summary>
 /// Connects to the 'products' database via MySql.
@@ -18,7 +19,7 @@ public class ProductManager
     }
     public List<Product> GetProducts()
     {
-        List<Product> result = new List<Product>();
+        List<Product> result = new();
         try
         {
             connection.Open();
@@ -68,9 +69,48 @@ public class ProductManager
             connection.Open();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = "INSERT INTO products (id, name, price) VALUES (@id, @name, @price)";
+
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@name", name);
             command.Parameters.AddWithValue("@price", price);
+
+            command.ExecuteNonQuery();
+        }
+        finally { connection.Close(); }
+    }
+    public Product SelectProduct(string id)
+    {
+        try
+        {
+            connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT id, name, price FROM products WHERE id = @id";
+            command.Parameters.AddWithValue("@id", id);
+            
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                string name = reader.GetString(1);
+                double price = reader.GetDouble(2);
+                return new Product(id, name, price);
+            }
+        }
+        finally { connection.Close(); }
+        return null;
+    }
+    public void UpdateProduct(string id, string name, double price)
+    {
+        try
+        {
+            connection.Open();
+        }
+        finally { connection.Close(); }
+    }
+    public void DeleteProduct(string id)
+    {
+        try
+        {
+            connection.Open();
         }
         finally { connection.Close(); }
     }
