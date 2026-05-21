@@ -19,7 +19,16 @@ internal class Program
                 case "L":
                     ListProducts();
                     break;
-                default: break;
+                case "I":
+                    InsertProduct();
+                    break;
+                case "D":
+                    break;
+                case "U":
+                    break;
+                default:
+                    Console.WriteLine("Nem létező parancs!");
+                    break;
             }
             input = Input("Adja meg a parancsot: ").ToUpper();
         }
@@ -30,6 +39,26 @@ internal class Program
         int n = products.Count;
         for (int i = 0; i < n; i++)
             Console.WriteLine(products[i]);
+    }
+    private static void InsertProduct()
+    {
+        string id, name;
+        double price;
+
+        id = Input("Adja meg a termék azonosítóját: ");
+        name = Input("Adja meg a termék nevét: ");
+        while (!double.TryParse(Input("Adja meg az árát: €"), out price))
+            Console.WriteLine("Pozitív számot adjon meg!");
+
+        pm.InsertProduct(id, name, price);
+    }
+    private static void UpdateProduct()
+    {
+
+    }
+    private static void DeleteProduct()
+    {
+
     }
     private static string Input(string input)
     {

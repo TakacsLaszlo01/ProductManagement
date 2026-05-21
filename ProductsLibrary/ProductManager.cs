@@ -11,10 +11,13 @@ public class ProductManager
 {
     private MySqlConnection connection;
     public ProductManager() : this("localhost", "shopping", "root") {}
+    private ProductManager(string address, string database,
+                           string user, string password = "")
+        : this(address, database, 3306, "root") {}
     private ProductManager(string address,
-        string database, string user, string password = "")
+        string database, int port, string user, string password = "")
     {
-        string connString = $"Data Source={address};Initial Catalog={database};User ID={user};Password={password};SslMode=none";
+        string connString = $"Data Source={address}; Initial Catalog={database}; Port=3306; User ID={user}; Password={password}; SslMode=none";
         connection = new MySqlConnection(connString);
     }
     public List<Product> GetProducts()
@@ -103,6 +106,14 @@ public class ProductManager
         try
         {
             connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "UPDATE products SET name = @name, price = @price WHERE id = @id";
+
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@price", price);
+
+            command.ExecuteNonQuery();
         }
         finally { connection.Close(); }
     }
@@ -111,6 +122,11 @@ public class ProductManager
         try
         {
             connection.Open();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM products WHERE id = @id";
+
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
         }
         finally { connection.Close(); }
     }
